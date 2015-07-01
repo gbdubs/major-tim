@@ -8,6 +8,7 @@ import org.junit.runners.Suite;
    TestNamer.class,
    TestGraphCreation.class,
    TestMatrixMultiplication.class,
+   TestPathsToSelfGenerator.class,
 })
 public class TestSuite {
 	

@@ -7,7 +7,7 @@ import utilities.Namer;
 
 public class Node {
 
-	private static int nodeId = 0;
+	private static int nodeId = 1;
 	
 	private String name;
 	private Set<Node> neighbors;

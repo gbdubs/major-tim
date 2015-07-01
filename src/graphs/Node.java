@@ -25,5 +25,9 @@ public class Node {
 	public String toString(){
 		return name;
 	}
+
+	public boolean hasNeighbor(Node nodeOther) {
+		return neighbors.contains(nodeOther);
+	}
 	
 }

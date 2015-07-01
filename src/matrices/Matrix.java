@@ -41,6 +41,10 @@ public class Matrix {
 		return "(" + rows + " x " + cols + ")";
 	}
 	
+	public String toString(){
+		return Arrays.deepToString(data);
+	}
+	
 	public boolean equals(Object other){
 		if (other instanceof Matrix){
 			Matrix otherMatrix = (Matrix) other;

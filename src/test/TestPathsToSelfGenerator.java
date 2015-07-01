@@ -6,10 +6,15 @@ import static org.junit.Assert.assertTrue;
 import graphs.Graph;
 import graphs.Node;
 
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashMap;
+import java.util.HashSet;
+import java.util.List;
 import java.util.Map;
+import java.util.Set;
 
-import matrices.PathsToSelfGenerator;
+import matrices.PathsToSelf;
 
 import org.junit.Test;
 
@@ -42,7 +47,7 @@ public class TestPathsToSelfGenerator {
 		expected.put(d, expD);
 		expected.put(e, expE);
 		
-		Map<Node, int[]> actual = PathsToSelfGenerator.generatePathsData(new Graph(expected.keySet()));
+		Map<Node, int[]> actual = PathsToSelf.generatePathData(new Graph(expected.keySet()));
 		
 		assertPathsToSelfMappingsEqual(expected, actual);
 		
@@ -66,5 +71,50 @@ public class TestPathsToSelfGenerator {
 				assertEquals(expectedNumbers[i], actualNumbers[i]);
 			}
 		}
+	}
+	
+	@Test
+	public void testEquivalencySetGeneration(){
+		Node a = new Node();
+		Node b = new Node();
+		Node c = new Node();
+		Node d = new Node();
+		Node e = new Node();
+		a.makeNeighbors(b);
+		a.makeNeighbors(d);
+		e.makeNeighbors(c);
+		e.makeNeighbors(b);
+		e.makeNeighbors(d);
+		c.makeNeighbors(b);
+		c.makeNeighbors(d);
+		
+		Graph g = new Graph(Arrays.asList(a, b, c, d, e));
+		
+		List<Set<Node>> expected = new ArrayList<Set<Node>>();
+		
+		Set<Node> aSet = new HashSet<Node>();
+		aSet.add(a);
+		Set<Node> bdSet = new HashSet<Node>();
+		bdSet.add(b);
+		bdSet.add(d);
+		Set<Node> ceSet = new HashSet<Node>();
+		ceSet.add(c);
+		ceSet.add(e);
+		expected.add(aSet);
+		expected.add(bdSet);
+		expected.add(ceSet);
+		
+		List<Set<Node>> actual = PathsToSelf.establishEquivalencySets(g);
+		
+		assertEquals(expected.size(), actual.size());
+		
+		for(int i = 0; i < actual.size(); i++){
+			assertSetsEqual(expected.get(i), actual.get(i));
+		}
+	}
+	
+	public static void assertSetsEqual(Set<Node> set, Set<Node> set2){
+		assertTrue(set.containsAll(set2));
+		assertTrue(set2.containsAll(set));
 	}
 }

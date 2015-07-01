@@ -1,10 +1,18 @@
 package matrices;
 
+import java.util.Arrays;
+
 public class Matrix {
 
 	private int rows;
 	private int cols;
 	private int[][] data;
+	
+	public Matrix(int[][] d){
+		this.data = d;
+		this.rows = d.length;
+		this.cols = d[0].length;
+	}
 	
 	public Matrix(int m, int n){
 		data = new int[m][n];
@@ -31,6 +39,14 @@ public class Matrix {
 	
 	public String dimensionString(){
 		return "(" + rows + " x " + cols + ")";
+	}
+	
+	public boolean equals(Object other){
+		if (other instanceof Matrix){
+			Matrix otherMatrix = (Matrix) other;
+			return Arrays.deepEquals(data, otherMatrix.data);
+		}
+		return false;
 	}
 	
 }

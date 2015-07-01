@@ -38,7 +38,7 @@ public class TestGraphCreation {
 										   {0, 1, 0, 1},
 										   {0, 1, 1, 0}};
 		
-		boolean deepEquals = Arrays.deepEquals(g.getAdjacencyList(), expectedAdjacencyMatrix);
+		boolean deepEquals = Arrays.deepEquals(g.getAdjacencyMatrix(), expectedAdjacencyMatrix);
 		
 		assertTrue(deepEquals);
 	}

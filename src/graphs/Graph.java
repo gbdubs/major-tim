@@ -48,8 +48,12 @@ public class Graph {
 	public Node getNode(int i){
 		return nodes.get(i);
 	}
+	
+	public List<Node> getNodes(){
+		return nodes;
+	}
 
-	public int[][] getAdjacencyList() {
+	public int[][] getAdjacencyMatrix() {
 		return adjacencyMatrix;
 	}
 }

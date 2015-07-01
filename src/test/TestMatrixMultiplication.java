@@ -1,6 +1,9 @@
 package test;
 
 import static org.junit.Assert.*;
+
+import java.util.Arrays;
+
 import matrices.Matrix;
 import matrices.MatrixDimensionMismatchException;
 
@@ -53,6 +56,31 @@ public class TestMatrixMultiplication {
 		boolean thrown = false;
 		try {
 			Matrix.multiply(a, a);
+		    fail("The matrix multiplication was successful. It should have thrown a dimension mismatch exception");;
+		} catch (MatrixDimensionMismatchException expectedException) {
+			thrown = true;
+		}
+		assertTrue(thrown);
+	}
+	
+	@Test
+	public void testOnlyOneWayMatrixMultiplication(){
+		int[][] a = {{1, 2, 3, 4}, {5, 6, 7, 8}};
+
+		int[][] b = {{1},{-1},{1},{-1}};
+		
+		int[][] expected = {{-2},{-2}};
+		
+		try {
+			boolean equal = Arrays.deepEquals(expected, Matrix.multiply(a, b));
+			assertTrue(equal);
+		} catch (MatrixDimensionMismatchException e) {
+			fail("The matrix multiplication should work for mismatched (but tennable) matrices.");
+		}
+
+		boolean thrown = false;
+		try {
+			Matrix.multiply(b, a);
 		    fail("The matrix multiplication was successful. It should have thrown a dimension mismatch exception");;
 		} catch (MatrixDimensionMismatchException expectedException) {
 			thrown = true;

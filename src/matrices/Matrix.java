@@ -21,20 +21,7 @@ public class Matrix {
 	}
 	
 	public static Matrix multiply(Matrix a, Matrix b) throws MatrixDimensionMismatchException{
-		if (a.cols != b.rows){
-			throw new MatrixDimensionMismatchException("MULTIPLICATION", a, b);
-		}
-		Matrix c = new Matrix(a.rows, b.cols);
-		for(int i = 0; i < a.rows; i++){
-			for(int j = 0; j < b.cols; j++){
-				int entry = 0;
-				for(int k = 0; k < a.cols; k++){
-					entry += a.data[i][k] * b.data[k][j];
-				}
-				c.data[i][j] = entry;
-			}
-		}
-		return c;
+		return new Matrix(multiply(a.data, b.data));
 	}
 	
 	public String dimensionString(){
@@ -51,6 +38,23 @@ public class Matrix {
 			return Arrays.deepEquals(data, otherMatrix.data);
 		}
 		return false;
+	}
+
+	public static int[][] multiply(int[][] a, int[][] b) throws MatrixDimensionMismatchException {
+		if (a[0].length != b.length){
+			throw new MatrixDimensionMismatchException("MULTIPLICATION", new Matrix(a), new Matrix(b));
+		}
+		int[][] c = new int[a.length][b[0].length];
+		for(int i = 0; i < a.length; i++){
+			for(int j = 0; j < b[0].length; j++){
+				int entry = 0;
+				for(int k = 0; k < b.length; k++){
+					entry += a[i][k] * b[k][j];
+				}
+				c[i][j] = entry;
+			}
+		}
+		return c;
 	}
 	
 }

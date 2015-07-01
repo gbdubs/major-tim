@@ -17,7 +17,7 @@ public class Graph {
 			throw new MatrixDimensionMismatchException("CREATING A SQUARE ADJACENCY MATRIX", new Matrix(matrix));
 		}
 		
-		List<Node> nodes = new ArrayList<Node>();
+		nodes = new ArrayList<Node>();
 		for (int i = 0; i < matrix.length; i++){
 			nodes.add(new Node());
 		}

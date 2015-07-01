@@ -18,8 +18,10 @@ public class Node {
 	}
 	
 	public void makeNeighbors(Node other){
-		other.neighbors.add(this);
-		this.neighbors.add(other);
+		if (!neighbors.contains(other)){
+			other.neighbors.add(this);
+			this.neighbors.add(other);
+		}
 	}
 	
 	public String toString(){
@@ -28,6 +30,10 @@ public class Node {
 
 	public boolean hasNeighbor(Node nodeOther) {
 		return neighbors.contains(nodeOther);
+	}
+
+	public int degree() {
+		return neighbors.size();
 	}
 	
 }

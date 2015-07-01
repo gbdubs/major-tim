@@ -1,4 +1,4 @@
-package matrices;
+package isomorphsim;
 
 import graphs.Graph;
 import graphs.Node;
@@ -11,6 +11,9 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
+
+import matrices.Matrix;
+import matrices.MatrixDimensionMismatchException;
 
 public class PathsToSelf {
 	

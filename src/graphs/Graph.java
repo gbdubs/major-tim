@@ -53,6 +53,10 @@ public class Graph {
 		return nodes;
 	}
 
+	public int size(){
+		return nodes.size();
+	}
+	
 	public int[][] getAdjacencyMatrix() {
 		return adjacencyMatrix;
 	}

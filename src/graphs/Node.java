@@ -1,5 +1,6 @@
 package graphs;
 
+import java.util.Collection;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -34,6 +35,10 @@ public class Node {
 
 	public int degree() {
 		return neighbors.size();
+	}
+
+	public Collection<Node> getNeighbors() {
+		return neighbors;
 	}
 	
 }

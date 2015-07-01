@@ -14,12 +14,6 @@ public class Matrix {
 		this.cols = d[0].length;
 	}
 	
-	public Matrix(int m, int n){
-		data = new int[m][n];
-		this.rows = m;
-		this.cols = n;
-	}
-	
 	public static Matrix multiply(Matrix a, Matrix b) throws MatrixDimensionMismatchException{
 		return new Matrix(multiply(a.data, b.data));
 	}
@@ -36,6 +30,9 @@ public class Matrix {
 		if (other instanceof Matrix){
 			Matrix otherMatrix = (Matrix) other;
 			return Arrays.deepEquals(data, otherMatrix.data);
+		} else if (other instanceof int[][]){
+			int[][] otherData = (int[][]) other;
+			return Arrays.deepEquals(data, otherData);
 		}
 		return false;
 	}

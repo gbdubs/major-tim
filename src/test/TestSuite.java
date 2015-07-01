@@ -9,6 +9,7 @@ import org.junit.runners.Suite;
    TestGraphCreation.class,
    TestMatrixMultiplication.class,
    TestPathsToSelfGenerator.class,
+   TestMatrixUtilFunctions.class
 })
 public class TestSuite {
 	

@@ -7,6 +7,7 @@ import org.junit.runners.Suite;
 @Suite.SuiteClasses({
    TestNamer.class,
    TestGraphCreation.class,
+   TestIsomorphismSolver.class,
    TestMatrixMultiplication.class,
    TestPathsToSelfGenerator.class,
    TestMatrixUtilFunctions.class
